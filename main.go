@@ -7,8 +7,8 @@ import (
 	"github.com/micro/micro/cmd"
 	"github.com/micro/micro/plugin"
 	"github.com/opentracing/opentracing-go"
-	tracer "github.com/xiaobudongzhang/micro-plugins/tracer/jaeger"
-	"github.com/xiaobudongzhang/micro-plugins/tracer/opentracing/stdhttp"
+	myjaeger "github.com/xiaobudongzhang/micro-plugins/tracer/myjaeger"
+	"github.com/xiaobudongzhang/micro-plugins/tracer/myopentracing/stdhttp"
 )
 
 func init() {
@@ -25,8 +25,8 @@ func init() {
 const name = "API gateway"
 
 func main() {
-	stdhttp.SetSampingFrequency(50)
-	t, io, err := tracer.NewTracer(name, "")
+	stdhttp.SetSamplingFrequency(50)
+	t, io, err := myjaeger.NewTracer(name, "")
 	if err != nil {
 		log.Fatal(err)
 	}
